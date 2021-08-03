@@ -4,9 +4,9 @@ var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
 var friends=[];
-app.get("/",function(req,res)){
-	window.location = "https://obscure-stream-83412.herokuapp.com/friends"
-}
+app.get("/",function(req,res){
+	res.redirect("/friends",302)
+})
 app.post("/addFriend",function(req,res){
 	console.log(req.body.newfriend);
 	var arr=req.body.newfriend.split(' ');
