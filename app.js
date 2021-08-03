@@ -4,9 +4,7 @@ var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
 var friends=[];
-app.get("/",function(req,res){
-	res.render("home");
-})
+
 app.post("/addFriend",function(req,res){
 	console.log(req.body.newfriend);
 	var arr=req.body.newfriend.split(' ');
