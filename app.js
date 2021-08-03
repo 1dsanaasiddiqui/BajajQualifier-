@@ -4,7 +4,9 @@ var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
 var friends=[];
-
+app.get("/",function(req,res)){
+	window.location = "https://obscure-stream-83412.herokuapp.com/friends"
+}
 app.post("/addFriend",function(req,res){
 	console.log(req.body.newfriend);
 	var arr=req.body.newfriend.split(' ');
@@ -34,6 +36,7 @@ app.post("/addFriend",function(req,res){
   }
   z ={
   	"is_success":x,
+  	"user_id": "john_doe_17091999",
   	"odd":odd,
   	"even":even
   }
@@ -47,7 +50,7 @@ app.get("/friends",function(req,res){
 	res.render("friends",{friends:friends});
 })
 
-app.listen(3000,function () {
+app.listen(process.env.PORT|| 3000,function () {
 	// body...
 	console.log("Server Started!!!")
 })
